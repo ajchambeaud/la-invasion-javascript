@@ -91,6 +91,13 @@ body {
   -o-transition: all .2s linear;
   transition: all .2s linear; }
 
+.reveal section img.imagen-normal {
+margin: 0px 0px;
+background: none;
+border: none;
+box-shadow: none;
+}
+
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
   border-color: #13daec;
@@ -146,3 +153,7 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #13daec; }
+
+.reveal ul li{
+  padding: 10px;
+}
