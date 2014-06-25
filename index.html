@@ -15,10 +15,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/github.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -38,7 +38,7 @@
 
 	<body>
 
-		<div class="reveal">
+		<div class="reveal beige">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
@@ -124,7 +124,7 @@
 					</section>
 					<section>
 						<p>Tipado Dinamico</p>
-<pre><code class="data-trim contenteditable" style="font-size: 18px;">
+<pre><code class="hljs javascript data-trim contenteditable">
 var a = "javascript";
 typeof a; // "string"
 a = 2014;
@@ -133,7 +133,7 @@ typeof a; // "number"
 					</section>
 					<section>
 						<p>Basado en Objetos</p>
-<pre><code class="data-trim contenteditable" style="font-size: 18px;">
+<pre><code class="hljs javascript data-trim contenteditable">
 var a = "JavaScript";
 typeof a; "string"
 a.indexOf("Script"); // 4
@@ -153,7 +153,7 @@ f.call(); // "Hi JS!"
 					</section>
 					<section>
 						<p>Orientado a Prototipos</p>
-<pre><code data-trim contenteditable>
+<pre><code class="hljs javascript data-trim contenteditable">
 var a = ["a", "b", "c", "d", "e"];
 a.primerElemento(); //TypeError: undefined is not a function
 
@@ -168,11 +168,11 @@ a.primerElemento(); // "a"
 					</section>
 					<section>
 						<p>Funciones de Orden Superior</p>
-<pre><code data-trim contenteditable style="font-size: 18px;">
+<pre><code class="hljs javascript data-trim contenteditable">
 function saludoBuilder(saludo){
-	return function(ente){
-			return "¡" + saludo + " " + ente + "!";
-	}
+  return function(ente){
+    return "¡" + saludo + " " + ente + "!";
+  }
 }
 
 var hola = saludoBuilder("hola");
@@ -209,14 +209,14 @@ hola("mundo"); // "¡hola mundo!"
 
 				<section>
 					<section>
-						<h2>Primeros pasos</h2>
+						<h2>Primeros pasos de js en la web</h2>
 						<p>Mientras que java se usaba para hacer programas complejos embebidos en una página web como Applets, Javascript se comenzo a usar para agregar a las páginas web una mayor interacción con el usuario</p>
 						<ul>
 							<li class="fragment">Validación de formularios HTML del lado del cliente</li>
 							<li class="fragment">Animaciones simples trabajando con los estilos del DOM</li>
-							<li class="fragment">"Popups" <image class="imagen-normal" width="50" src="img/angry.png"/></li>
+							<li class="fragment">"Popups" <image style="border: none;display: inline-block;margin: 0px;" width="50" src="img/angry.png"/></li>
 							<li class="fragment">Cuadros de díalogo</li>
-							<li class="fragment">Redirecciones <image class="imagen-normal" width="50" src="img/angry.png"/><image class="imagen-normal" width="50" src="img/angry.png"/></li>
+							<li class="fragment">Redirecciones <image style="border: none;display: inline-block;margin: 0px;" width="50" src="img/angry.png"/><image style="border: none;display: inline-block;margin: 0px;" width="50" src="img/angry.png"/></li>
 						</ul>
 					</section>
 				</section>
@@ -234,17 +234,19 @@ hola("mundo"); // "¡hola mundo!"
 						<image width="400" src="img/ajax-limpiador.jpg"/>
 					</section>
 					<section>
-						<image width="400" src="img/ajax_p.jpg"/>
-						<ul>
-							<li class="fragment">¿Qué es AJAX?</li>
-							<li class="fragment">¿XML?</li>
-							<li class="fragment">JSON</li>
-							<li class="fragment">REST</li>
-						</ul>
+						<image width="600" src="img/ajax_p.jpg"/>
+					</section>
+					<section>
+						<h2>XML vs JSON</h2>
+						<p><image width="700" src="img/JsonXmlResults.png"/></p>
+					</section>
+					<section>
+						<h2>REST Web Services</h2>
+						<p><image width="600" src="img/API-Architecture.png"/></p>
 					</section>
 					<section>
 						<h2>AJAX, Javascript y Cross-Browsing</h2>
-<pre><code data-trim contenteditable style="font-size: 18px;">
+<pre><code class="hljs javascript data-trim contenteditable">
 function Xhr(){ /* returns cross-browser XMLHttpRequest, or null if unable */
     try {
         return new XMLHttpRequest();
@@ -354,7 +356,7 @@ function Xhr(){ /* returns cross-browser XMLHttpRequest, or null if unable */
 						</ul>
 					</section>
 					<section>
-						<h2>Nuevos engines para desarrollo de Juegos basados en WebGL</h2>
+						<h2>Desarrollo de juegos basados en WebGL</h2>
             <iframe width="560" height="315" src="http://www.youtube.com/embed/AJg_BmY9-8o" frameborder="0" allowfullscreen></iframe>
 					</section>
 				</section>
@@ -374,12 +376,49 @@ function Xhr(){ /* returns cross-browser XMLHttpRequest, or null if unable */
 				<section>
 					<section>
 						<h2><font color="#ff9900">Node.js</font>: JavaScript llega al servidor.</h2>
+						<image width="700" src="img/node.png"/>
+					</section>
+					<section>
+						<p>Node.js es una plataforma basada en el interprete de javascript de Chrome (v8) para construir fácilmente aplicaciones de red escalables.</p>
+					</section>
+					<section>
+						<image width="700" src="img/nodejsarch.png"/>
+					</section>
+					<section>
+<pre><code class="hljs javascript data-trim contenteditable">
+var http = require('http');
+
+var server = http.createServer(function (req, res) {
+	res.writeHead(200, {'Content-Type': 'text/plain'});
+	res.end('Hola Mundo\n');
+});
+
+server.listen(1337, '127.0.0.1');
+
+console.log('Servidor conrriendo en http://127.0.0.1:1337/');
+</pre></code>
+					</section>
+					<section>
+					<h2>Caracteristicas</h2>
+					<ul>
+						<li class="fragment">non-blocking I/O</li>
+						<li class="fragment">Event-Loop</li>
+					</ul>
+					</section>
+					<section>
+					<h2>Usos</h2>
+					<ul>
+						<li class="fragment">Aplicaciones Real-Time</li>
+						<li class="fragment">Mobile Rest API's</li>
+						<li class="fragment">Aplicaciones web de alta concurrencia</li>
+						<li class="fragment">Aplicaciones Javascript end-to-end</li>
+					</ul>
 					</section>
 				</section>
 
 				<section>
 					<section>
-						<h2><font color="#ff9900">MongoBD</font> y <font color="#ff9900">CouchDB</font>: JavaScript llega a las Bases de Datos</h2>
+						<h2><font color="#ff9900">MongoDB</font> y <font color="#ff9900">CouchDB</font>: JavaScript llega a las Bases de Datos</h2>
 					</section>
 				</section>
 
