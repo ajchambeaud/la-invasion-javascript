@@ -417,14 +417,95 @@ console.log('Servidor conrriendo en http://127.0.0.1:1337/');
 				</section>
 
 				<section>
+
 					<section>
 						<h2><font color="#ff9900">MongoDB</font> y <font color="#ff9900">CouchDB</font>: JavaScript llega a las Bases de Datos</h2>
 					</section>
+
+					<section>
+						<image width="900" src="img/couchdb.png"/>
+					</section>
+
+					<section>
+						<image width="700" src="img/mongodb.png"/>
+					</section>
+
+					<section>
+						<image width="900" src="img/mongoarch.png"/>
+					</section>
+
+					<section>
+						<p>Insertando un usuario en la colección usuarios desde la consola de MongoDB</p>
+<pre><code class="hljs javascript data-trim contenteditable">
+> var nuevoUsuario = {
+  "nombre" : "Juan",
+  "apellido" : "Perez",
+  "dni" : 33111222
+}
+
+> db.usuarios.insert(nuevoUsuario);
+</pre></code>
+					</section>
+
+					<section>
+<p>Buscando un usuario por DNI</p>
+<pre><code class="hljs javascript data-trim contenteditable">
+> var juan = db.usuarios.findOne({ "dni" : 33111222 });
+</pre></code>
+<pre><code class="hljs javascript data-trim contenteditable">
+> juan
+</pre></code>
+<pre><code class="hljs javascript data-trim contenteditable">
+> {
+  "nombre" : "Juan",
+  "apellido" : "Perez",
+  "dni" : 33111222
+}
+</pre></code>
 				</section>
+
+<section>
+	<p>Actualizando información de un usuario</p>
+<pre><code class="hljs javascript data-trim contenteditable">
+> var usuario = db.usuarios.findOne({ "dni" : 33111222 });
+> usuario.nombre = "Juan Ignacio";
+> usuario.edad = 25;
+> db.usuarios.save(usuario);
+</pre></code>
+</section>
+
+<section>
+	<p>Eliminando un usuario de la base de datos</p>
+<pre><code class="hljs javascript data-trim contenteditable">
+> db.usuarios.remove( "dni" : 33111222 } )
+</pre></code>
+</section>
+
+
+			</section>
 
 				<section>
 					<section>
 						<h2>JavaScript y el mundo Mobile</h2>
+					</section>
+					<section>
+						<h2>PhoneGap</h2>
+						<p>Desarrollo de aplicaciones moviles multiplataforma basadas en HTML5</p>
+						<image width="700" src="img/phonegap.png"/>
+					</section>
+					<section>
+						<h2>Ventajas</h2>
+						<li class="fragment">Se mantiene un solo código fuente</li>
+						<li class="fragment">Javascript es más fácil...</li>
+						<li class="fragment">Interfaces más flexibles</li>
+						<li class="fragment">Costos</li>
+					</section>
+					<section>
+						<h2>Desventajas</h2>
+						<li class="fragment">Performance</li>
+						<li class="fragment">Inapropiado para juegos u otras apps complejas</li>
+						<li class="fragment">Desaprovechamiemto de las ventajas de cada plataforma</li>
+						<li class="fragment">Menor control sobre los dispositivos de hardware</li>
 					</section>
 				</section>
 
