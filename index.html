@@ -44,7 +44,7 @@
 			<div class="slides">
 				<section>
 					<h1>La invasión <font color="#ff9900">JavaScript</font></h1>
-					<h3>Conociendo al lenguaje que dominara el mundo</h3>
+					<h3>Conociendo el lenguaje que dominará el mundo</h3>
 					<p>
 						<small>Por <a href="http://a-i.nu">Ainu Jorge Chambeaud Helguera</a> / <a href="http://twitter.com/ajchambeaud">@ajchambeaud</a></small>
 					</p>
@@ -55,7 +55,7 @@
 				<section>
 					<section>
 						<h2>Origenes</h2>
-						<p>Brendan Eich, necesitamos un lenguaje de programación para nuestro navegador. ¿Podes hacerlo en 10 días?</p>
+						<p>Brendan Eich, necesitamos un lenguaje de programación para nuestro navegador. ¿Podés hacerlo en 10 días?</p>
 							<img width="300" src="img/netscape.png"/>
 							<img width="300" src="img/BrendanEich.jpg" style="
 									margin-bottom: 80px;
@@ -68,15 +68,15 @@
 						<ol>
 							<li class="fragment">Crear un lenguaje liviano para el navegador Netscape</li>
 							<li class="fragment">Debería ser un complemento para el lenguaje Java</li>
-							<li class="fragment">Facil de usar para programadores no profecionales</li>
-							<li class="fragment">Facilmente incrustable un una página web</li>
+							<li class="fragment">Fácil de usar para programadores no profesionales</li>
+							<li class="fragment">Fácilmente incrustable un una página web</li>
 						</ol>
 					</section>
 
 					<section>
 						<h2>Restricciones</h2>
 						<ol>
-							<li class="fragment">No debe parecer una competecia para Java</li>
+							<li class="fragment">No debe parecer una competencia para Java</li>
 							<li class="fragment">No debe estar basado en clases (para eso está Java...)</li>
 							<li class="fragment">¿Qué tal si lo llamamos JavaScript?</li>
 						</ol>
@@ -88,7 +88,7 @@
 					</section>
 
 					<section>
-						<h2>¿En que se parece a Java?</h2>
+						<h2>¿En qué se parece a Java?</h2>
 						<ol>
 							<li class="fragment">Sintaxis similar a ANSI C</li>
 							<li class="fragment">...</li>
@@ -106,34 +106,23 @@
 				</section>
 
 				<section>
+
 					<section>
 						<h2>Características</h2>
-						<ul>
-							<li class="fragment">Tipado Dinamico</li>
-							<li class="fragment">Basado en Objetos</li>
-							<li class="fragment">Orientado a Prototipos</li>
-								<ul>
-									<li class="fragment">Mecanismos de herencia basados en prototipos</li>
-									<li class="fragment">Funciones como contructores de objectos</li>
-								</ul>
-							<li class="fragment">Funcional</li>
-								<ul>
-									<li class="fragment">Funciones de orden superior</li>
-									<li class="fragment">Clousures</li>
-								</ul>
-						</ul>
 					</section>
-					<section>
-						<p>Tipado Dinamico</p>
+
+<section>
+<p>Tipado Dinámico</p>
 <pre><code class="hljs javascript data-trim contenteditable">
 var a = "javascript";
 typeof a; // "string"
 a = 2014;
 typeof a; // "number"
 </code></pre>
-					</section>
-					<section>
-						<p>Basado en Objetos</p>
+</section>
+
+<section>
+<p>Basado en Objetos</p>
 <pre><code class="hljs javascript data-trim contenteditable">
 var a = "JavaScript";
 typeof a; "string"
@@ -151,9 +140,10 @@ var f = function(){ console.log("Hi JS!"); };
 typeof f; // "function"
 f.call(); // "Hi JS!"
 </code></pre>
-					</section>
-					<section>
-						<p>Orientado a Prototipos</p>
+</section>
+
+<section>
+<p>Mecanismos de herencia basados en prototipos</p>
 <pre><code class="hljs javascript data-trim contenteditable">
 var a = ["a", "b", "c", "d", "e"];
 a.primerElemento(); //TypeError: undefined is not a function
@@ -166,9 +156,37 @@ Array.prototype.primerElemento = function(){
 
 a.primerElemento(); // "a"
 </code></pre>
-					</section>
-					<section>
-						<p>Funciones de Orden Superior</p>
+</section>
+
+<section>
+<p>Funciones como constructores de objetos</p>
+<pre><code class="hljs javascript data-trim contenteditable">
+function Persona(nombre){
+
+  //atributos privados
+  var nombre = nombre;
+
+  //metodos privados
+  var construirSaludo = function(){
+    return "Hola, soy una persona y me llamo " + nombre;
+  }
+
+  //metodos publicos
+  this.getNombre = function(){
+    return nombre || "NN";
+  }
+
+  this.saludar = function(){
+    return construirSaludo();
+  }
+
+  return this;
+}
+</code></pre>
+</section>
+
+<section>
+<p>Funciones de Orden Superior</p>
 <pre><code class="hljs javascript data-trim contenteditable">
 function saludoBuilder(saludo){
   return function(ente){
@@ -180,16 +198,31 @@ var hola = saludoBuilder("hola");
 
 hola("mundo"); // "¡hola mundo!"
 </code></pre>
-					</section>
+</section>
+
+<section>
+<p>Clousures</p>
+<pre><code class="hljs javascript data-trim contenteditable">
+var sumar = ( function () {
+    var contador = 0;
+    return function () {return contador += 1;}
+} )()
+
+sumar(); //retorna 1
+sumar(); //retorna 2
+sumar(); //retorna 3
+</code></pre>
+</section>
+
 				</section>
 
 				<section>
 					<h2>Ventajas</h2>
 					<ul>
-						<li class="fragment">Facil de aprender</li>
+						<li class="fragment">Fácil de aprender</li>
 						<li class="fragment">Accesible para personas sin experiencia previa en programación</li>
 						<li class="fragment">No requiere configuración ni instalación de entornos de trabajo complejos</li>
-						<li class="fragment">Un navegador y editor de texto es todo lo que necesitamos para empeazar a usar JS</li>
+						<li class="fragment">Un navegador y un editor de texto es todo lo que necesitamos para empeazar a usar JS</li>
 						<li class="fragment">Es posible hacer aplicaciones complejas sin ser un experto en el lenguaje</li>
 					</ul>
 				</section>
@@ -201,8 +234,8 @@ hola("mundo"); // "¡hola mundo!"
 					</section>
 					<section>
 						<ul>
-							<li class="fragment">Si bien es facil dar los primeros pasos, los aspectos avanzados del lenguaje pueden ser intrincados</li>
-							<li class="fragment">Se parece a los lenguajes procedurales y orientados a objetos descendientes de la familia C/C++, pero en realidad es un lenguaje muy distinto y eso suele general malos entendidos.</li>
+							<li class="fragment">Si bien es fácil dar los primeros pasos, los aspectos avanzados del lenguaje pueden ser intrincados</li>
+							<li class="fragment">Se parece a los lenguajes procedurales y orientados a objetos descendientes de la familia C/C++, pero en realidad es un lenguaje muy distinto y eso suele generar malos entendidos.</li>
 							<li class="fragment">Suele ser visto como una herramienta secundaria por la mayoría de los programadores</li>
 						</ul>
 					</section>
@@ -211,12 +244,12 @@ hola("mundo"); // "¡hola mundo!"
 				<section>
 					<section>
 						<h2>Primeros pasos de js en la web</h2>
-						<p>Mientras que java se usaba para hacer programas complejos embebidos en una página web como Applets, Javascript se comenzo a usar para agregar a las páginas web una mayor interacción con el usuario</p>
+						<p>Mientras que java se usaba para hacer programas complejos embebidos en una página web como Applets, Javascript se comenzó a usar para agregar a las páginas web una mayor interacción con el usuario</p>
 						<ul>
 							<li class="fragment">Validación de formularios HTML del lado del cliente</li>
 							<li class="fragment">Animaciones simples trabajando con los estilos del DOM</li>
 							<li class="fragment">"Popups" <image style="border: none;display: inline-block;margin: 0px;" width="50" src="img/angry.png"/></li>
-							<li class="fragment">Cuadros de díalogo</li>
+							<li class="fragment">Cuadros de diálogo</li>
 							<li class="fragment">Redirecciones <image style="border: none;display: inline-block;margin: 0px;" width="50" src="img/angry.png"/><image style="border: none;display: inline-block;margin: 0px;" width="50" src="img/angry.png"/></li>
 						</ul>
 					</section>
@@ -318,16 +351,16 @@ function Xhr(){ /* returns cross-browser XMLHttpRequest, or null if unable */
 					<section>
 						<h2>Problemas</h2>
 						<ul>
-							<li class="fragment">Javascript se crea en un contexto donde la web se navegaba por hipervinculos</li>
+							<li class="fragment">Javascript se crea en un contexto donde la web se navegaba por hipervínculos</li>
 							<li class="fragment">Cada click del usuario reiniciaba el contexto del navegador</li>
-							<li class="fragment">El script de js duraba solo unos segundos en memoria hasta que el usuario cambiaba de página</li>
-							<li class="fragment">Las aplicaciones AJAX impicaban que el usuario no se movia de la página</li>
+							<li class="fragment">El script de js duraba sólo unos segundos en memoria hasta que el usuario cambiaba de página</li>
+							<li class="fragment">Las aplicaciones AJAX impicaban que el usuario no se movía de la página</li>
 							<li class="fragment">Se hizo evidente que los motores de javascript no estaban preparados para el desafío</li>
 							<li class="fragment">El manejo de memoria era pobre y las aplicaciones se volvían lentas</li>
 						</ul>
 					</section>
 					<section>
-						<h2>Se necesitaba un nuevo motor de JavaScript que este a la altura de la nueva web.</h2>
+						<h2>Se necesitaba un nuevo motor de JavaScript que esté a la altura de la nueva web.</h2>
 					</section>
 					<section>
 						<h2>Google libera el engine v8 junto con la salida del Navegador Chrome.</h2>
@@ -380,7 +413,7 @@ function Xhr(){ /* returns cross-browser XMLHttpRequest, or null if unable */
 						<image width="700" src="img/node.png"/>
 					</section>
 					<section>
-						<p>Node.js es una plataforma basada en el interprete de javascript de Chrome (v8) para construir fácilmente aplicaciones de red escalables.</p>
+						<p>Node.js es una plataforma basada en el intérprete de javascript de Chrome (v8) para construir fácilmente aplicaciones de red escalables.</p>
 					</section>
 					<section>
 						<image width="700" src="img/nodejsarch.png"/>
@@ -396,11 +429,11 @@ var server = http.createServer(function (req, res) {
 
 server.listen(1337, '127.0.0.1');
 
-console.log('Servidor conrriendo en http://127.0.0.1:1337/');
+console.log('Servidor corriendo en http://127.0.0.1:1337/');
 </pre></code>
 					</section>
 					<section>
-					<h2>Caracteristicas</h2>
+					<h2>Características</h2>
 					<ul>
 						<li class="fragment">non-blocking I/O</li>
 						<li class="fragment">Event-Loop</li>
@@ -436,7 +469,7 @@ console.log('Servidor conrriendo en http://127.0.0.1:1337/');
 					</section>
 
 					<section>
-						<p>Insertando un usuario en la colección usuarios desde la consola de MongoDB</p>
+						<p>Insertando un nuevo usuario en la colección <i>usuarios</i> desde la consola de MongoDB</p>
 <pre><code class="hljs javascript data-trim contenteditable">
 > var nuevoUsuario = {
   "nombre" : "Juan",
@@ -478,7 +511,7 @@ console.log('Servidor conrriendo en http://127.0.0.1:1337/');
 <section>
 	<p>Eliminando un usuario de la base de datos</p>
 <pre><code class="hljs javascript data-trim contenteditable">
-> db.usuarios.remove( "dni" : 33111222 } )
+> db.usuarios.remove( { "dni" : 33111222 } )
 </pre></code>
 </section>
 
@@ -492,7 +525,7 @@ console.log('Servidor conrriendo en http://127.0.0.1:1337/');
 					</section>
 					<section>
 						<h2>PhoneGap</h2>
-						<p>Desarrollo de aplicaciones moviles multiplataforma basadas en HTML5</p>
+						<p>Desarrollo de aplicaciones móviles multiplataforma basadas en HTML5</p>
 						<image width="700" src="img/phonegap.png"/>
 					</section>
 					<section>
@@ -514,11 +547,11 @@ console.log('Servidor conrriendo en http://127.0.0.1:1337/');
 					</ul>
 					</section>
 					<section>
-						<h2>Nuevas plataformas moviles basadas en tecnologias web</h2>
+						<h2>Nuevas plataformas móviles basadas en tecnologías web</h2>
 						<img src="img/mobileOS.png"/>
 					</section>
 					<section>
-						<h2>FirefoxOS</h2>
+						<h2>Firefox<font color="#ff9900">OS</font></h2>
 						<img src="img/firefoxOSStack.png"/>
 					</section>
 					<section>
@@ -536,7 +569,7 @@ console.log('Servidor conrriendo en http://127.0.0.1:1337/');
 						<h2>Llevar la web al escritorio</h2>
 						<p>Desarrollo de aplicaciones desktop basadas en Javascript, HTML y CSS</p>
 						<ul>
-							<li class="fragment">Interfaces más atractivas y faciles de desarrollar</li>
+							<li class="fragment">Interfaces más atractivas y fáciles de desarrollar</li>
 							<li class="fragment">Usar javascript como lenguaje de programación</li>
 							<li class="fragment">Mismo <i>knowhow</i> que en el desarrollo web </li>
 						</ul>
@@ -548,14 +581,14 @@ console.log('Servidor conrriendo en http://127.0.0.1:1337/');
 						<h2>Chromium Embedded Framework</h2>
 						<ul>
 							<li class="fragment">Permite desarrollar aplicaciones desktop basadas en el motor de Chromium</li>
-							<li class="fragment">Permite usar todas las caracteristicas de HTML5 en una app desktop</li>
+							<li class="fragment">Permite usar todas las características de HTML5 en una app desktop</li>
 							<li class="fragment">Escasa documentación</li>
-							<li class="fragment">Complejo de compilar para quines no son especialistas en C/C++</li>
+							<li class="fragment">Complejo de compilar para quienes no son especialistas en C/C++ (como yo!)</li>
 							<li class="fragment">Desarrollo no estandarizado</li>
 						</ul>
 					</section>
 					<section>
-						<h2>node-webkit: una solucion integrada</h2>
+						<h2>node-webkit: una solución integrada</h2>
 						<img src="img/nod-webkit.png" style="border:none" />
 					</section>
 					<section>
@@ -566,8 +599,8 @@ console.log('Servidor conrriendo en http://127.0.0.1:1337/');
 						<h2>Características</h2>
 						<ul>
 								<li class="fragment">Apps escritas en HTML5, CSS3, JS y WebGL.</li>
-								<li class="fragment">Soporte completo para APIs de Node.js y modulos de terceros.</li>
-								<li class="fragment">Buena performance: Node y WebKit corren en el mismo thread (los objetos estan en el mismo heap y pueden referenciarse entre ellos)</li>
+								<li class="fragment">Soporte completo para APIs de Node.js y módulos de terceros.</li>
+								<li class="fragment">Buena performance: Node y WebKit corren en el mismo thread (los objetos están en el mismo heap y pueden referenciarse entre ellos)</li>
 								<li class="fragment">Distribución simple.</li>
 								<li class="fragment">Disponible en Linux, Mac y Windows.</li>
 						</ul>
@@ -589,6 +622,11 @@ console.log('Servidor conrriendo en http://127.0.0.1:1337/');
 					<section>
 						<img src="img/mean.png" style="border:none" />
 					</section>
+				</section>
+
+				<section>
+					<h2>¿ PREGUNTAS ?</h2>
+					<img src="img/preguntas.gif" style="border:none" width="500"/>
 				</section>
 
 				<section>
